@@ -13,6 +13,8 @@ class GameRepo extends RepoTrait {
   private val david = Player("david", "david")
   private val elmo = Player("elmo", "elmo")
 
+  private var players = Set(amy, bob, david, elmo)
+
   private val games = Set(
     Game("1", new Date, Winner(amy, StraightWin),
       Loser(bob, Unfinished, -10) ::
@@ -45,4 +47,10 @@ class GameRepo extends RepoTrait {
 
   override def getAllGames: Set[Game] = games
 
+  def getAllPlayers: Set[Player] = players
+
+  def addPlayer(id: String, name: String) = {
+    players = players + Player(id, name)
+    true
+  }
 }
